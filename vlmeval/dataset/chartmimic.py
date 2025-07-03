@@ -45,6 +45,8 @@ high_level_eval_prompt = {
     "system_msg": "",
 }
 
+SYSTEM_PROMPT = "You are a profesionnal Python developer using matplotlib to generate charts that re-create images. Provide the code wrapped in a ```python block."
+
 
 def image_path_to_data_uri(image_path):
     mime, _ = mimetypes.guess_type(image_path)
@@ -577,7 +579,7 @@ class ChartMimic(ImageBaseDataset):
 
         # >>> judge <<<
         if len(indices):
-            # judge_kwargs['system_prompt'] = SYSTEM_PROMPT
+            judge_kwargs['system_prompt'] = SYSTEM_PROMPT
             judge_kwargs["temperature"] = 0
             judge_kwargs["img_detail"] = "high"
             judge_kwargs["timeout"] = 100
